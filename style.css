@@ -1,7 +1,7 @@
 body {
     background-color: antiquewhite;
 }
-.jumbotron {
+.heading {
     background-color: rgb(46, 46, 77);
     color: white;
     height: 50px;
@@ -12,11 +12,20 @@ body {
   border-color: rgb(53, 51, 51);  
 }
 
-.city-search {
-    font-size: 18px;
+#search-area {
+    border-radius: 10px;
+}
+.button1 {
+    background-color: rgb(46, 46, 77);
+    color: white;
+    border-radius: 10px;
 }
 
-.button1 {
-    background-color: aqua;
-    color: white;
+.button2 {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.hide {
+    display: none;
 }
