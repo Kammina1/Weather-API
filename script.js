@@ -5,7 +5,7 @@ function pastCitySearches() {
     var searchedCities = document.getElementById("searchedCities")
     pastCity.forEach (city => {
         var cityDiv = document.createElement("div")
-        cityDiv.classList.add("justify-content-center", "col-3", "p-2")
+        cityDiv.classList.add("justify-content-center", "col-5", "p-2")
         var cityBtn = document.createElement("button")
         cityBtn.classList.add("button2", "w-100", "p-2")
         var cityBreak = document.createElement("div")
