@@ -1,4 +1,4 @@
-var pastCity = ["Salt Lake", "Utah", "Raleigh", "Austin", "Shit"]
+var pastCity = ["Salt Lake", "Utah", "Raleigh", "Austin", "IDK"]
 var dateEl = document.getElementById("date")
 var currentTemp;
 var currentWind;
@@ -45,4 +45,8 @@ function showWeather(data) {
     var currentWind = wind_speed
     var currentHumidity = humidity
     var currentUvi = uvi
+    console.log(currentTemp)
+    console.log(currentWind)
+    console.log(currentHumidity)
+    console.log(currentUvi)
 }
