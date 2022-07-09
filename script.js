@@ -49,4 +49,8 @@ function showWeather(data) {
     console.log(currentWind)
     console.log(currentHumidity)
     console.log(currentUvi)
+    document.getElementById('temperature').innerHTML = "Temp: " + temp
+    document.getElementById('wind').innerHTML = "Wind speed: " + wind_speed + "mph"
+    document.getElementById('hum').innerHTML =  "Humidity: " + humidity
+    document.getElementById('uvindex').innerHTML = "UV Index: " + uvi
 }
