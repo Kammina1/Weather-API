@@ -1,4 +1,3 @@
-var pastCity = ["Salt Lake", "Utah", "Raleigh", "Austin", "IDK"]
 var dateEl = document.getElementById("date")
 var currentTemp;
 var currentWind;
@@ -6,11 +5,10 @@ var currentHumidity;
 var currentUvi;
 var currentTemp = document.getElementById("current-temp")
 const API_KEY = "5a34ba45183b84a351de83286e31ee9d"
-var citySearched = document.getElementById("search-area").value;
-console.log(citySearched);
 
 function pastCitySearches() {
     var searchedCities = document.getElementById("searchedCities")
+    var pastCity = searchedCities.value;
     pastCity.forEach (city => {
         var cityDiv = document.createElement("div")
         cityDiv.classList.add("justify-content-center", "col-5", "p-2")
@@ -25,7 +23,7 @@ function pastCitySearches() {
     })
     
 }
-pastCitySearches();
+
 
 function getWeatherData() {
     navigator.geolocation.getCurrentPosition((success) => {
@@ -45,12 +43,32 @@ function showWeather(data) {
     var currentWind = wind_speed
     var currentHumidity = humidity
     var currentUvi = uvi
-    console.log(currentTemp)
-    console.log(currentWind)
-    console.log(currentHumidity)
-    console.log(currentUvi)
     document.getElementById('temperature').innerHTML = "Temp: " + temp
     document.getElementById('wind').innerHTML = "Wind speed: " + wind_speed + "mph"
     document.getElementById('hum').innerHTML =  "Humidity: " + humidity
     document.getElementById('uvindex').innerHTML = "UV Index: " + uvi
+}
+
+function getInfo() {
+    var citySearched = document.getElementById("search-area");
+    var searchedCity = citySearched.value;
+
+ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchedCity}&appid=5a34ba45183b84a351de83286e31ee9d`)
+ 
+ .then(response => response.json())
+ .then (data =>{
+    for(i=0;i<5;i++) {
+        document.getElementById("day"+ (i+1)+ "Temp").innerHTML = "Temp: " + Number(data.list[i].main.temp - 273).toFixed(1) * 1.8 + 32;
+    }
+    for(i=0;i<5;i++) {
+        document.getElementById("day"+ (i+1)+ "Wind").innerHTML = "Wind: " + Number(data.list[i].wind.speed) + " mph";
+    }
+    for(i=0;i<5;i++) {
+        document.getElementById("day"+ (i+1)+ "Humidity").innerHTML = "Humidity: " + Number(data.list[i].main.humidity);
+    }
+    console.log(data)
+ })
+
+ .catch(err => alert("Something went wrong"))
+ pastCitySearches();
 }
